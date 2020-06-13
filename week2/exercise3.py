@@ -112,7 +112,15 @@ def loops_3():
     TIP: notice that this needs to to return strings of numbers,
          so call str(number) to cast.
     """
-    return None
+    number_square = []
+    for i in range(10):
+        number_row = []
+        for j in range(10):
+            number_row.append(str(i))
+        number_square.append(number_row)
+
+    print (number_square)
+    return number_square
 
 
 def loops_4():
@@ -132,7 +140,15 @@ def loops_4():
       ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
     ]
     """
-    return None
+    number_block = []
+    for i in range(10):
+        number_row = []
+        for j in range(10):
+            number_block.append(str(j))
+        number_row.append(number_block)
+
+
+    return number_block
 
 
 def loops_5():
@@ -159,7 +175,16 @@ def loops_5():
         "There are {} green bottles".format(8)
     you'll come to see the pros and cons of each over time.
     """
-    return None
+    coord_block = []
+    for i in range(10):
+        coord_row = []
+        for j in range(5):
+            coord_block.append(str(i))
+        coord_row.append(coord_block)
+
+
+    return number_block
+    
 
 
 def loops_6():
