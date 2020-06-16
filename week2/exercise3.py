@@ -29,12 +29,10 @@ def fix_it(moves=True, should_move=True):
     As an extra challenge, see if you can get that down to three.
     """
     print ("does it move?")
-    if moves and should_move:
+    if moves == should_move:
         return "No Problem"
     elif moves and not should_move:
         return "Duct Tape"
-    elif not moves and not should_move:
-        return "No Problem"
     elif not moves and should_move:
         return "WD-40"
 
@@ -118,8 +116,6 @@ def loops_3():
         for j in range(10):
             number_row.append(str(i))
         number_square.append(number_row)
-
-    print (number_square)
     return number_square
 
 
@@ -143,12 +139,10 @@ def loops_4():
     number_block = []
     for i in range(10):
         number_row = []
-        for j in range(10):
-            number_block.append(str(j))
+    for j in range(10):
+        number_block.append(str(j))
         number_row.append(number_block)
-
-
-    return number_block
+    return number_row
 
 
 def loops_5():
@@ -175,15 +169,14 @@ def loops_5():
         "There are {} green bottles".format(8)
     you'll come to see the pros and cons of each over time.
     """
-    coord_block = []
+    coord_row = []
     for i in range(10):
-        coord_row = []
+        coord_block = []
         for j in range(5):
-            coord_block.append(str(i))
+            coord_block.append('(i' + str(i) + ", j" + str(j) + ')')
         coord_row.append(coord_block)
 
-
-    return number_block
+    return coord_row
     
 
 
@@ -207,7 +200,13 @@ def loops_6():
     You can use a variable.
     TIP: look out for the starting condition.
     """
-    return None
+    block = []
+    for x in range(10):
+        row = []
+        for j in range(x+1):
+            row.append(str(j))
+        block.append(row)
+    return block
 
 
 def loops_7():
@@ -231,7 +230,17 @@ def loops_7():
     This is a hard problem. Use lots of experimentation and draw
     lots of diagrams!
     """
-    return None
+    List = []
+    for x in range(5):
+        stacklist = []
+        for j in range(9):
+            if (5 - x - 2 < j and j < x + 5):
+                stacklist.append("*")
+            else:
+                stacklist.append(" ")
+        List.append(stacklist)
+    return List
+
 
 
 def lp(some_kind_of_list, exercise_name):
