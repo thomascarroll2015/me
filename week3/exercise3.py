@@ -25,7 +25,73 @@ def advancedGuessingGame():
     Remember to think modular. Try to keep your functions small and single
     purpose if you can!
     """
+    return
+    print("\nWelcome to the guessing game!")
+    print("A number between _ and _ ?")
+    
+    while True:
+      lwrBound = input("Enter an lwr bound: ")
+      try:
+          lwrval = int(lwrBound)
+          print('Thanks, that is a number')
+          break
+      except ValueError:
+          try:
+              lwrval = float(lwrBound)
+              print("nope. Input is a float number, try again")
+          except ValueError:
+              print("No.. input is not a number. It's a string, try again")
+    while True:
+      upperBound = input("Enter an upper bound: ")
+      try:
+          uppval = int(upperBound)
+          print('Thanks')
+          break
+      except ValueError:
+          try:
+              uppval = float(upperBound)
+              print("nope. Input is a float  number")
+          except ValueError:
+              print("No.. input is not a number. It's a string")
 
+
+
+    print("OK then, a number between {} and {} ?".format(lwrval , uppval))
+    actualNumber = random.randint(0, uppval)
+
+    input_validation = False
+
+    while not input_validation:
+        guessedNumber = (input("Guess a number: "))
+        try:
+                  gval = int(guessedNumber)
+                  print('Thanks for the integer')
+                  break
+        except ValueError:
+            try:
+                gval = float(guessedNumber)
+                print("nope. Input is a float  number")
+            except ValueError:
+                print("No.. input is not a number. It's a string")
+
+    while not input_validation: 
+        if uppval > gval > lwrval:
+            print ('Guess is in range')
+            input_validation = True
+        else:
+            print ('not in range doggy')
+            input_validation = True
+    
+    guessed = False
+    while not guessed:
+        print("You guessed {},".format(gval),)
+        if gval == actualNumber:
+            print("You got it!! It was {}".format(actualNumber))
+            guessed = True
+        elif gval < actualNumber:
+            print("Too small, try again :'(")
+        else:
+            print("Too big, try again :'(")
     return "You got it!"
     # the tests are looking for the exact string "You got it!". Don't modify that!
 

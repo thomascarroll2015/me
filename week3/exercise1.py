@@ -12,7 +12,13 @@ def loop_ranger(start, stop=None, step=1):
     The look up the docs for range(), you can answer this with just the range 
     function, but we'd like you to do it the long way, probably using a loop.
     """
-    return None
+    chungus = []
+    y = start
+    while y < stop:
+        chungus.append(y)
+        y = y + step
+
+    return chungus
 
 
 def lone_ranger(start, stop, step):
@@ -20,7 +26,7 @@ def lone_ranger(start, stop, step):
 
     Look up the docs for range() and wrap it in a 1:1 way
     """
-    return None
+    return loop_ranger(start, stop, step)
 
 
 def two_step_ranger(start, stop):
@@ -29,7 +35,12 @@ def two_step_ranger(start, stop):
     Sometimes you want to hide complexity.
     Make a range function that always has a step size of 2
     """
-    return None
+    lista = []
+    for i in range(start, stop, 2):
+        lista.append(i)
+        print(lista)
+
+    return lista
 
 
 def stubborn_asker(low, high):
@@ -40,7 +51,19 @@ def stubborn_asker(low, high):
 
     Look up the docs for input
     """
+    message = 'give me a number between {}, and {}'.format(low, high)
+    
+    while True: 
+        input_numb = int(input(message))
+        if high > input_numb > low:
+            print ('nice 1')
+            return input_numb 
+        else:
+            print ('nope')
+
+        
     return None
+
 
 
 def not_number_rejector(message):
@@ -50,6 +73,22 @@ def not_number_rejector(message):
     (e.g. "cow", "six", "8!") then throw it out and ask for an actual number.
     When you do get a number, return it.
     """
+    message = 'give a chungus numbgus: '
+    
+    
+    input_attempt = input(message)
+    try:
+        val = int(input_attempt)
+        print('nice')
+    except ValueError:
+        try:
+            val = float(input_attempt)
+            print("nope. Input is a float  number")
+        except ValueError:
+            print("No.. input is not a number. It's a string")
+    return input_attempt
+
+
     return None
 
 
@@ -61,7 +100,20 @@ def super_asker(low, high):
     Try to call at least one of the other functions to minimise the
     amount of code.
     """
-    return None
+    message = f'give me a number between {low}, and {high}'
+    
+    while True:
+        input_attempt = input(message)
+        try:
+            val = int(input_attempt)
+            print('nice one ')
+            if high > val > low:
+                return val
+            else:
+                print ('out of bounds')
+        except ValueError:
+            print("No.. input is not a number. It's a string")
+
 
 
 if __name__ == "__main__":
@@ -71,9 +123,9 @@ if __name__ == "__main__":
     # code is robust to the situations that you'll see in action.
     # NOTE: because some of these take user input you can't run them from
 
-    print("\nloop_ranger", loop_ranger(1, 10, 2))
-    print("\nlone_ranger", lone_ranger(1, 10, 3))
-    print("\ntwo_step_ranger", two_step_ranger(1, 10))
+    # print("\nloop_ranger", loop_ranger(1, 10, 2))
+    # print("\nlone_ranger", lone_ranger(1, 10, 3))
+    # print("\ntwo_step_ranger", two_step_ranger(1, 10))
     print("\nstubborn_asker")
     stubborn_asker(30, 45)
     print("\nnot_number_rejector")
