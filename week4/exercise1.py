@@ -35,8 +35,13 @@ def get_some_details():
     """
     json_data = open(LOCAL + "/lazyduck.json").read()
 
-    data = json.loads(json_data)
-    return {"lastName": None, "password": None, "postcodePlusID": None}
+    data = json.loads(json_data) 
+    him = data['results'][0]
+    return {
+        "lastName": him['name']['last'],
+        "password": him['login']['password'],
+        "postcodePlusID": ((int(him['id']['value'])) +  him['location']['postcode'])
+        }
 
 
 def wordy_pyramid():
@@ -87,7 +92,7 @@ def wordy_pyramid():
     print(Pyramid)
 
 
-    return none
+    return Pyramid
 
 
 def pokedex(low=1, high=5):
@@ -103,14 +108,34 @@ def pokedex(low=1, high=5):
     TIP: these long json accessors base["thing"]["otherThing"] and so on, can
          get very long. If you are accessing a thing often, assign it to a
          variable and then future access will be easier.
-    """
-    template = "https://pokeapi.co/api/v2/pokemon/{id}"
 
-    url = template.format(id=5)
-    r = requests.get(url)
-    if r.status_code is 200:
-        the_json = json.loads(r.text)
-    return {"name": None, "weight": None, "height": None}
+         Set the height of the previous pokemon to zero. return the 
+         height of the current (first) pokemon required. If the height of 
+         the current pokemon is greater than the previous pokemon, set the 
+         height of the previous pokemon as the tallest and most current height. 
+         This will compare 1 and 2, 2 and 3, 3 and 4 and so on until you reach the 
+         higher bound. Then return the updated tallest pokemon.
+    """
+    template = "https://pokeapi.co/api/v2/pokemon/{}"
+    pokemon = []
+    tallest = 0
+    for i in range(low, high):
+        url = template.format(i)
+        r = requests.get(url)
+        keys_needed = ['name' , 'weight' , 'height']
+        if r.status_code is 200:
+            the_json = json.loads(r.text)
+            pokemon.append(the_json)
+    
+    for p in pokemon:
+            heightcurrent = p['height']
+            if heightcurrent > tallest:
+                tallest = heightcurrent
+                name = p['name']
+                weight = p['weight']
+                height = p['height']
+    return {"name": name, "weight": weight, "height": height}
+
 
 
 def diarist():
@@ -127,7 +152,21 @@ def diarist():
          the test will have nothing to look at.
     TIP: this might come in handy if you need to hack a 3d print file in the future.
     """
-    pass
+    
+    the_file = open(LOCAL + "/Trispokedovetiles(laser).gcode" , 'r')
+    target = "M10 P1"
+    number = 0
+    for line in the_file:
+        if target in line:
+            number += 1
+    
+    new_file = open(LOCAL + "/lasers.pew" , "w")
+    new_file.write(str(number))
+    new_file.close
+
+    
+
+
 
 
 if __name__ == "__main__":

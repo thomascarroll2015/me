@@ -8,6 +8,14 @@ find insight
 visualise the data
 communicate the insight
 
+for loops are safer than while loops
+
+start stop step
+
+when for i in range
+
+i is the actual object in the list
+
 As a rule of thumb, data with 1000 rows or more is pretty good
 
 open
@@ -17,7 +25,12 @@ open
 .load          loads from a file object 
 .loads         loads a string from file object
 
+response code of 200 means all is well
+
 mode is string "w" , "r" , "r+"
+
+Keys are strings, before colon
+can call upon keys with
 
 ../ means go up or back the file chain  
 

@@ -48,7 +48,7 @@ def who_is_cool(file_path):
     history_book.close()
 
 
-who_is_cool("ben_is_cool.txt")
+who_is_cool("../ben_is_cool.txt")
 
 
 # some JSON examples:
