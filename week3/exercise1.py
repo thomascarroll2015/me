@@ -101,18 +101,18 @@ def super_asker(low, high):
     amount of code.
     """
     message = f'give me a number between {low}, and {high}'
-    
-    while True:
+    while True:   
         input_attempt = input(message)
-        try:
+        try: 
             val = int(input_attempt)
-            print('nice one ')
-            if high > val > low:
-                return val
-            else:
-                print ('out of bounds')
         except ValueError:
-            print("No.. input is not a number. It's a string")
+            print("invalid")
+        if high > val > low:
+            False
+                    
+                else:
+                    print ('out of bounds')
+    return val
 
 
 

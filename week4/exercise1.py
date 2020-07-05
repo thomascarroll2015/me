@@ -164,6 +164,7 @@ def diarist():
     new_file.write(str(number))
     new_file.close
 
+
     
 
 

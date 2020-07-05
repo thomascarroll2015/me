@@ -1,5 +1,7 @@
 TODO: Reflect on what you learned this week and what is still unclear.
 
+https://www.bocsar.nsw.gov.au/Pages/bocsar_datasets/Datasets-.aspx
+
 pick a dataset 
 document it
 explore it
