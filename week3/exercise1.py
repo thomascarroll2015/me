@@ -52,7 +52,6 @@ def stubborn_asker(low, high):
     Look up the docs for input
     """
     message = 'give me a number between {}, and {}'.format(low, high)
-    
     while True: 
         input_numb = int(input(message))
         if high > input_numb > low:
@@ -65,7 +64,6 @@ def stubborn_asker(low, high):
     return None
 
 
-
 def not_number_rejector(message):
     """Ask for a number repeatedly until actually given one.
 
@@ -73,23 +71,15 @@ def not_number_rejector(message):
     (e.g. "cow", "six", "8!") then throw it out and ask for an actual number.
     When you do get a number, return it.
     """
-    message = 'give a chungus numbgus: '
+    mes = 'give a chungus numbgus: '
     
-    
-    input_attempt = input(message)
-    try:
-        val = int(input_attempt)
-        print('nice')
-    except ValueError:
+    while True:
+        input_attempt = input(mes)
         try:
-            val = float(input_attempt)
-            print("nope. Input is a float  number")
-        except ValueError:
-            print("No.. input is not a number. It's a string")
-    return input_attempt
-
-
-    return None
+            val = int(input_attempt)
+            return val
+        except:
+            print("No.. input is not a number.")
 
 
 def super_asker(low, high):
@@ -101,19 +91,18 @@ def super_asker(low, high):
     amount of code.
     """
     message = f'give me a number between {low}, and {high}'
-    while True:   
-        input_attempt = input(message)
-        try: 
-            val = int(input_attempt)
-        except ValueError:
-            print("invalid")
-        if high > val > low:
-            False
-                    
-                else:
-                    print ('out of bounds')
-    return val
-
+    while True:
+        testing = input(message)
+        try:
+            testing = int(testing)
+        except:
+            print('Nope')
+            continue
+        if low <= testing <= high:
+            return testing
+        else:
+            print('nope')
+    return None
 
 
 if __name__ == "__main__":
@@ -123,9 +112,9 @@ if __name__ == "__main__":
     # code is robust to the situations that you'll see in action.
     # NOTE: because some of these take user input you can't run them from
 
-    # print("\nloop_ranger", loop_ranger(1, 10, 2))
-    # print("\nlone_ranger", lone_ranger(1, 10, 3))
-    # print("\ntwo_step_ranger", two_step_ranger(1, 10))
+    print("\nloop_ranger", loop_ranger(1, 10, 2))
+    print("\nlone_ranger", lone_ranger(1, 10, 3))
+    print("\ntwo_step_ranger", two_step_ranger(1, 10))
     print("\nstubborn_asker")
     stubborn_asker(30, 45)
     print("\nnot_number_rejector")

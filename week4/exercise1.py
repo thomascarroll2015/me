@@ -15,6 +15,7 @@ if LOCAL != CWD:
     print("relative to where you think they are")
     print("LOCAL", LOCAL)
     print("CWD", CWD)
+        
 
 
 def get_some_details():

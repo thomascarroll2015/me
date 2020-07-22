@@ -35,7 +35,6 @@ def binary_search(low, high, actual_number):
         elif (guess == actual_number):
             return {"guess": guess, "tries": tries}
         tries += 1
-    
 
 
 if __name__ == "__main__":

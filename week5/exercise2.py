@@ -31,7 +31,7 @@ def italian_dinner(axiom="tomatoes", guard=6):
             thought of as theroums of the system; and
         3.  there are a set of rules for transforming any statement which is
             part of the formal system into any other using replacement rules.
-    In the itallian dinner, teh axiom is of course _tomatoes_
+    In the itallian dinner, the axiom is of course _tomatoes_
 
     Note that in order for this to work, we need to have at least one word in
     the right-hand side that matches one of the words in the left-hand side.
