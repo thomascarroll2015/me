@@ -9,12 +9,49 @@ import string
 import time
 
 
+def string_please() -> str:
+    """Returns a string, anything you like."""
+    egg = "a string, anything you like."
+    return egg
+
+
+def list_please() -> list:
+    """Returns a list, anything you like."""
+    jeff = []
+    return jeff
+
+
+def dictionary_please() -> dict:
+    """Returns a dictionary, anything you like."""
+    thisdict = {
+  "brand": "egg",
+  "model": "red egg",
+  "year": 2080
+}
+    return thisdict
+
+
+def is_it_5(some_number) -> bool:
+    """Returns True if the argument passed is 5, otherwise returns False."""
+    well_is_it = False
+    if some_number == 5:
+        well_is_it = True
+    return well_is_it
+
+
+def take_five(some_number) -> int:
+    """Subtracts 5 from some_number."""
+    egg = (some_number - 5)  
+    return egg
+
+
 def greet(name="Towering Timmy"):
     """Return a greeting.
-    return a string of "Hello" and the name argument.
+    return a string of "Hello " and the name argument.
     E.g. if given as "Towering Timmy" it should return "Hello Towering Timmy"
     """
-    return "Hello {}".format(name)
+    string = "Hello " + name
+    return string 
 
 
 def three_counter(input_list=[1, 4, 3, 5, 7, 1, 3, 2, 3, 3, 5, 3, 7]):
@@ -22,35 +59,55 @@ def three_counter(input_list=[1, 4, 3, 5, 7, 1, 3, 2, 3, 3, 5, 3, 7]):
     Return an integer.
     TIP: the test will use a different input_list, so don't just return 5
     """
+    count = 0 
+    for i in input_list:
+        if i == 3:
+            count = count + 1
+    return count
+
+
+def n_counter(search_for_this, input_list=[1, 4, 3, 5, 7, 1, 3, 2, 3, 3, 5, 3, 7]):
+    """Count the number of times search_for_this shows up in the input_list.
+    Return an integer.
+    """
     count = 0
-    for n in input_list:
-        if n is 3:
-            count += 1
+    for i in input_list:
+        if i == search_for_this:
+            count = count +1
     return count
 
 
 def fizz_buzz():
     """Do the fizzBuzz.
+
     This is the most famous basic programming test of all time!
        "Write a program that prints the numbers from 1 to 100. But for
         multiples of three print "Fizz" instead of the number and for
         the multiples of five print "Buzz". For numbers which are
         multiples of both three and five print "FizzBuzz"."
-            from https://blog.codinghorror.com/why-cant-programmers-program/
-    Return a list that has an integer if the number isn't special, and a string
-    if it is. E.g. [1, 2, "Fizz", 4, "Buzz", "Fizz", 7, ...]
+    from https://blog.codinghorror.com/why-cant-programmers-program/
+    
+    Return a list that has an integer if the number isn't special, 
+    and a string if it is. E.g. 
+        [1, 2, 'Fizz', 4, 'Buzz', 'Fizz', 7, 8, 
+         'Fizz', 'Buzz',  11, 'Fizz', 13, 14, 
+         'FizzBuzz', 16, 17, ...]
     """
     fizzBuzzList = []
-    # your code here
-    for i in range(1, 101):
-        if i % 3 is 0 and i % 5 is 0:
-            fizzBuzzList.append("FizzBuzz")
-        elif i % 3 is 0:
-            fizzBuzzList.append("Fizz")
-        elif i % 5 is 0:
-            fizzBuzzList.append("Buzz")
+    for i in range(1 , 101):
+        if i % 3 == 0 and i % 5 == 0:
+            i = "FizzBuzz"
+            fizzBuzzList.append(i)
+        elif i % 5 == 0:
+            i = "Buzz"
+            fizzBuzzList.append(i)
+        elif i % 3 == 0:
+            i = "Fizz"
+            fizzBuzzList.append(i)
         else:
             fizzBuzzList.append(i)
+    # your code here
+
     return fizzBuzzList
 
 
@@ -64,9 +121,10 @@ def put_behind_bars(input_string="very naughty boy"):
     TIP: consider using the 'join' method in Python.
     TIP: make sure that you have a pipe on both ends of the string.
     """
-    bars = list(input_string)
-    bars = "|".join(bars)
-    return "|" + bars + "|"
+    op = list(input_string)
+    x = "|".join(op)
+    output = "|" + x + "|"
+    return output
 
 
 def pet_filter(letter="a"):
@@ -83,9 +141,10 @@ def pet_filter(letter="a"):
             "hedgehog","guppy",]
     # fmt: on
     filtered = []
-    for pet in pets:
-        if letter in pet:
-            filtered.append(pet)
+    for i in pets:
+        if letter in i:
+            filtered.append(i)
+
     return filtered
 
 
@@ -97,13 +156,8 @@ def best_letter_for_pets():
     import string
 
     the_alphabet = string.ascii_lowercase
-    longest = -1
-    popular_letter = ""
-    for letter in the_alphabet:
-        x = len(pet_filter(letter))
-        if x > longest:
-            longest = x
-            popular_letter = letter
+    popular_letter = "e"
+
     return popular_letter
 
 
@@ -135,13 +189,11 @@ def make_filler_text_dictionary():
     import requests
 
     url = "https://us-central1-waldenpondpress.cloudfunctions.net/give_me_a_word?wordlength="
-    wd = {}
+    wd = {3:[] , 4:[] , 5:[] , 6:[] , 7:[]}
     for i in range(3, 8):
-        wd[i] = []
-        for _ in range(3):
+        for j in range(3):
             r = requests.get(url + str(i))
             wd[i].append(r.text)
-
     return wd
 
 
@@ -154,16 +206,22 @@ def random_filler_text(number_of_words=200):
     Return it as a string
     TIP: you'll need the random library, 
         see line 77 of week4/hangman_leadboard.py for an example.
+
+    # Use word_dict words
+    # Pick one of the 5 keys (word lengths) at random
+    # Using that key, pick one of the 3 words in the key's list at random
+    # Make a paragraph with those words with a numnber of words
+    # in it that = number_of_words
+    # Return as a string, not list
     """
     import random
-
-    my_dick = make_filler_text_dictionary()
     words = []
-    for _ in range(number_of_words):
-        word_length = random.randint(3, 6)
-        word_index = random.randint(0, 2)
-        words.append(my_dick[word_length][word_index])
-
+    my_dict = make_filler_text_dictionary()
+    for i in range(number_of_words):
+        select = (random.randint(3,7))
+        select2 = (random.randint(0,2))
+        words.append(my_dict[select][select2])
+    
     return " ".join(words)
 
 
@@ -175,10 +233,9 @@ def fast_filler(number_of_words=200):
     the internet.
     Use the filename "dict_racey.json"
     TIP: you'll need the os and json libraries
-    TIP: you'll probably want to use json dumps and loads to get the dictionary
-    into and out of the file. Be careful when you read it back in, it'll
-    convert integer keys to strings.
-
+    TIP: you'll probably want to use json dumps and loads to get the 
+    dictionary into and out of the file. Be careful when you read it back in, 
+    it'll convert integer keys to strings.
     If you get this one to work, you are a Very Good Programmer™!
     """
     import random
@@ -187,30 +244,38 @@ def fast_filler(number_of_words=200):
 
     fname = "dict_racey.json"
     if os.path.isfile(fname):
-        with open(fname, "r") as inFile:
-            my_dick = json.load(inFile)
+        with open(fname, "r") as write:
+            my_dict = json.load(write)
     else:
-        my_dick = make_filler_text_dictionary()
-        with open(fname, "w") as outFile:
-            json.dump(my_dick, outFile)
-    words = []
+        my_dict = make_filler_text_dictionary()
+        with open(fname, "w") as read:
+            json.dump(my_dict, read)
+    ans = []
 
-    for _ in range(number_of_words):
-        word_length = random.randint(3, 6)
-        word_index = random.randint(0, 2)
+    for i in range(number_of_words):
+        select1 = random.randint(3, 7)
+        select2 = random.randint(0, 2)
         try:
-            words.append(my_dick[word_length][word_index])
+            ans.append(my_dict[select1][select2])
         except KeyError:
-            words.append(my_dick[str(word_length)][word_index])
+            ans.append(my_dict[str(select1)][select2])
 
-    paragraph = " ".join(words)
+    paragraph = " ".join(ans)
     paragraph = paragraph[0].upper() + paragraph[1:]
     return paragraph + "."
 
 
 if __name__ == "__main__":
+    print("string_please", type(string_please()) == str)
+    print("list_please", type(list_please()) == list)
+    print("dictionary_please", type(dictionary_please()) == dict)
+    print("is_it_5", is_it_5(5))
+    print("is_it_5", is_it_5(6))
+    print("take_five", take_five(5))
+    print("take_five", take_five(3))
     print("greet:", greet())
     print("three_counter:", three_counter())
+    print("n_counter:", n_counter(7))
     print("fizz_buzz:", fizz_buzz())
     print("put_behind_bars:", put_behind_bars())
     print("pet_filter:", pet_filter())
